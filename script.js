@@ -6,6 +6,8 @@ for (let i = 0; i < 12; i++) {
   szamdoboz.innerHTML = x
   gamearea.appendChild(szamdoboz)
   szamdoboz.addEventListener('click', () => {
-    szamdoboz.innerHTML = ''
+    szamdoboz.classList.add("rejtett")
   })
 }
+
+
