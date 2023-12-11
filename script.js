@@ -1,12 +1,35 @@
 const gamearea = document.querySelector('#gamearea')
 
+let t=[]
+for(let i=0;i<12;i++)
+{
+  t.push(i+1);
+}
+
+for(let i=0;i<100;i++)
+{
+  let pos1=Math.floor(Math.random()*12);
+  let pos2=Math.floor(Math.random()*12);
+  let temp=t[pos1];
+  t[pos1]=t[pos2];
+  t[pos2]=temp;
+
+}
+
+let nextnumber=1
 for (let i = 0; i < 12; i++) {
   const szamdoboz = document.createElement('div')
-  let x = Math.floor(Math.random() * 12) + 1
-  szamdoboz.innerHTML = x
-  gamearea.appendChild(szamdoboz)
+  szamdoboz.innerHTML = t[i];
+  gamearea.appendChild(szamdoboz);
+
+
+
   szamdoboz.addEventListener('click', () => {
+    if(szamdoboz.innerText==nextnumber)
+    {
     szamdoboz.classList.add("rejtett")
+    nextnumber++
+    }
   })
 }
 
