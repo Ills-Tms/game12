@@ -12,10 +12,11 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
+  gap: 2px;
 }
 #container {
   display: grid;
-  grid-template-columns: 1fr 50% 1fr;
+  grid-template-columns: 1fr 1.5fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   height: 100vh;
   margin: 0px;
@@ -27,4 +28,8 @@ body {
 }
 .rejtett {
   visibility: hidden;
+}
+#szamlalo {
+  text-align: center;
+  font-size: 50px;
 }
