@@ -35,6 +35,6 @@ const szamlalo = document.querySelector("#szamlalo");
 
 let ido = 0;
 setInterval(function () {
-  szamlalo.innerText = ido/10;
+  szamlalo.innerText = ido / 10;
   ido++;
 }, 100);
