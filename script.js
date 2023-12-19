@@ -1,10 +1,13 @@
 const gameArea = document.querySelector('#gamearea')
 const startButton = document.querySelector('#start')
 const szamlalo = document.querySelector('#szamlalo')
+const scoreBoard = document.querySelector('#score')
 let ido = 0
 let t = []
 let idozito
 let nextNumber
+let legjobbido = 9999999
+let elozo
 
 function initNumbers() {
   for (let i = 0; i < 12; i++) {
@@ -35,8 +38,14 @@ function createBoxes() {
         nextNumber++
 
         if (nextNumber == 13) {
+          elozo = ido
           clearInterval(idozito)
+          ido = 0
         }
+        if (legjobbido > elozo) {
+          legjobbido = elozo
+        }
+        scoreBoard.innerText = 'A legjobb ido: ' + legjobbido
       }
     })
   }
