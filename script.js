@@ -1,40 +1,73 @@
-const gamearea = document.querySelector("#gamearea");
-//#region ----------------------------------------------------------------------------------------
-let t = [];
-for (let i = 0; i < 12; i++) {
-  t.push(i + 1);
+const gameArea = document.querySelector('#gamearea')
+const startButton = document.querySelector('#start')
+const szamlalo = document.querySelector('#szamlalo')
+let ido = 0
+let t = []
+let idozito
+let nextNumber
+
+function initNumbers() {
+  for (let i = 0; i < 12; i++) {
+    t.push(i + 1)
+  }
 }
-//#endregion -------------------------------------------------------------------------------------
-//#region ----------------------------------------------------------------------------------------
-for (let i = 0; i < 100; i++) {
-  let pos1 = Math.floor(Math.random() * 12);
-  let pos2 = Math.floor(Math.random() * 12);
-  let temp = t[pos1];
-  t[pos1] = t[pos2];
-  t[pos2] = temp;
+
+function shuffleNumbers() {
+  for (let i = 0; i < 100; i++) {
+    let pos1 = Math.floor(Math.random() * 12)
+    let pos2 = Math.floor(Math.random() * 12)
+    let temp = t[pos1]
+    t[pos1] = t[pos2]
+    t[pos2] = temp
+  }
 }
-//#endregion -------------------------------------------------------------------------------------
 
-//#region ----------------------------------------------------------------------------------------
-let nextnumber = 1;
-for (let i = 0; i < 12; i++) {
-  const szamdoboz = document.createElement("div");
-  szamdoboz.innerHTML = t[i];
-  gamearea.appendChild(szamdoboz);
+function createBoxes() {
+  for (let i = 0; i < 12; i++) {
+    let szamDoboz = document.createElement('div')
 
-  szamdoboz.addEventListener("click", () => {
-    if (szamdoboz.innerText == nextnumber) {
-      szamdoboz.classList.add("rejtett");
-      nextnumber++;
-    }
-  });
+    szamDoboz.classList.add('rejtett')
+    gameArea.appendChild(szamDoboz)
+
+    szamDoboz.addEventListener('click', function () {
+      if (szamDoboz.innerText == nextNumber) {
+        szamDoboz.classList.add('rejtett')
+        nextNumber++
+
+        if (nextNumber == 13) {
+          clearInterval(idozito)
+        }
+      }
+    })
+  }
 }
-//#endregion -------------------------------------------------------------------------------------
+function fillShowBoxes() {
+  const szamDobozok = gameArea.querySelectorAll('div')
+  let i = 0
+  for (szamDoboz of szamDobozok) {
+    szamDoboz.innerText = t[i]
+    szamDoboz.classList.remove('rejtett')
+    i++
+  }
+}
 
-const szamlalo = document.querySelector("#szamlalo");
+function startTimer() {
+  idozito = setInterval(function () {
+    szamlalo.innerText = ido / 100
+    ido++
+  }, 10)
+}
 
-let ido = 0;
-setInterval(function () {
-  szamlalo.innerText = ido / 10;
-  ido++;
-}, 100);
+initNumbers()
+createBoxes()
+
+startButton.addEventListener('click', function () {
+  if (szamlalo.innerText != 0) {
+    ido = 0
+  } else {
+    startTimer()
+  }
+  nextNumber = 1
+  shuffleNumbers()
+  fillShowBoxes()
+})
