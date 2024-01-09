@@ -13,7 +13,7 @@
   backdrop-filter: 15px;
   font-size: 20px;
   cursor: pointer;
-  font-family: 'wellfleet', monospace;
+  font-family: 'Space Mono', monospace;
 }
 #gamearea {
   border: 2px solid black;
