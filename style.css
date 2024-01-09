@@ -8,20 +8,22 @@
   display: flex;
   height: 100px;
   margin: 0%;
-  border-radius: 15px;
+  border-radius: 20px;
   color: aliceblue;
-  background-color: rgb(66, 82, 95);
+  backdrop-filter: 15px;
   font-size: 20px;
   cursor: pointer;
+  font-family: 'wellfleet', monospace;
 }
 #gamearea {
-  border: 1px solid black;
+  border: 2px solid black;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
   gap: 2px;
   border-radius: 15px;
+  padding: 3px;
 }
 #container {
   display: grid;
