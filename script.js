@@ -38,14 +38,14 @@ function createBoxes() {
         nextNumber++
 
         if (nextNumber == 13) {
-          elozo = ido
           clearInterval(idozito)
+          elozo = ido
           ido = 0
+          if (legjobbido > elozo) {
+            legjobbido = elozo
+            scoreBoard.innerText = 'A legjobb ido:' + legjobbido
+          }
         }
-        if (legjobbido > elozo) {
-          legjobbido = elozo
-        }
-        scoreBoard.innerText = 'A legjobb ido: ' + legjobbido
       }
     })
   }
@@ -62,21 +62,19 @@ function fillShowBoxes() {
 
 function startTimer() {
   idozito = setInterval(function () {
-    szamlalo.innerText = ido / 100
+    szamlalo.innerText = (ido / 100).toFixed(2)
     ido++
   }, 10)
 }
 
-initNumbers()
 createBoxes()
-
+initNumbers()
 startButton.addEventListener('click', function () {
   if (szamlalo.innerText != 0) {
     ido = 0
-  } else {
-    startTimer()
   }
   nextNumber = 1
+  startTimer()
   shuffleNumbers()
   fillShowBoxes()
 })

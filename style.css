@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Wellfleet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@1,700&display=swap');
+
 #gamearea div {
   border: 1px solid black;
   justify-content: center;
@@ -27,7 +30,6 @@
   height: 100vh;
   margin: 0px;
 }
-
 body {
   margin: 0px;
   min-height: 100vh;
@@ -43,6 +45,7 @@ body {
   color: aliceblue;
   display: grid;
   align-items: center;
+  font-family: 'Wellfleet', monospace;
 }
 #gombid {
   display: grid;
